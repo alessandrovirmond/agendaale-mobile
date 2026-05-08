@@ -3,6 +3,7 @@
     "name": "agendaale-mobile",
     "slug": "agendaale-mobile",
     "version": "1.0.0",
+    "scheme": "agendaale",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,10 +22,16 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.agendaalemobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "@react-native-google-signin/google-signin",
+      "expo-secure-store",
+      "expo-router"
+    ]
   }
 }
