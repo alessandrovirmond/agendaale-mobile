@@ -6,7 +6,7 @@ const TOKEN_KEY = '@agendaale_jwt';
 export const AuthService = {
   configureGoogleSignIn() {
     GoogleSignin.configure({
-      webClientId: 'SEU_WEB_CLIENT_ID_AQUI.apps.googleusercontent.com', 
+      webClientId: 'AIzaSyC7sv28Wy0olSwOpnYrjcMApK-1QPZL-Fo.apps.googleusercontent.com', 
     });
   },
 

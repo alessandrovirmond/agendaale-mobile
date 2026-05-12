@@ -4,7 +4,7 @@ import { DeveloperLogo } from '../components/DeveloperLogo';
 import { useLoginController } from '../controllers/useLoginController';
 import { colors } from '../theme/colors';
 
-export function LoginScreen() {
+export default function LoginScreen() {
   const { handleLogin, isLoading } = useLoginController();
 
   return (

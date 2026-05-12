@@ -7,11 +7,11 @@ const WatermelonProvider = DatabaseProvider as any;
 
 export default function RootLayout() {
   return (
-    <WatermelonProvider database={database}>
+    <>
       <StatusBar style="dark" />
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="(auth)/login" />
       </Stack>
-    </WatermelonProvider>
+    </>
   );
 }
