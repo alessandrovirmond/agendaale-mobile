@@ -1,7 +1,7 @@
 import { GoogleSignin, User } from '@react-native-google-signin/google-signin';
 import * as SecureStore from 'expo-secure-store';
 
-const TOKEN_KEY = '@agendaale_jwt';
+const TOKEN_KEY = 'agendaale_jwt';
 
 export const AuthService = {
   configureGoogleSignIn() {
