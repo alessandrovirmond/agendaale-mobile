@@ -19,7 +19,6 @@ export function useLoginController() {
       
       const apiJwtToken = await AuthService.authenticateWithApi(googleToken);
       
-      // 3. Guarda no cofre do aparelho
       await AuthService.saveTokenSecurely(apiJwtToken);
       
       setStoreToken(apiJwtToken);

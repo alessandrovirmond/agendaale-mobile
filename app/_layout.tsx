@@ -1,34 +1,18 @@
 import { useEffect, useState } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import { Slot, useRouter, useSegments } from 'expo-router';
-import { AuthService } from '../src/services/AuthService'; // Ajuste o path se necessário
-import { useAuthStore } from '../src/store/useAuthStore'; // Ajuste o path se necessário
-import { colors } from '../src/theme/colors';
+import { AuthService } from '../src/services/AuthService';
+import { useAuthStore } from '../src/store/useAuthStore';
 
 export default function RootLayout() {
   const [isHydrating, setIsHydrating] = useState(true);
-  const { setToken, token } = useAuthStore();
+  const { token } = useAuthStore();
   const segments = useSegments();
   const router = useRouter();
 
-
   useEffect(() => {
-    const hydrateAuth = async () => {
-      try {
-        const savedToken = await AuthService.getStoredToken();
-        if (savedToken) {
-          setToken(savedToken);
-        }
-      } catch (error) {
-        console.error('Erro ao hidratar token:', error);
-      } finally {
-        setIsHydrating(false); 
-      }
-    };
- 
-    hydrateAuth();
+    setIsHydrating(false);
   }, []);
-
 
   useEffect(() => {
     if (isHydrating) return;
@@ -42,13 +26,7 @@ export default function RootLayout() {
     }
   }, [token, isHydrating, segments]);
 
-  if (isHydrating) {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: colors.background }}>
-        <ActivityIndicator size="large" color={colors.primary || '#000'} />
-      </View>
-    );
-  }
+  if (isHydrating) return <ActivityIndicator />;
 
   return <Slot />;
 }
