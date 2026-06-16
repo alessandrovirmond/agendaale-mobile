@@ -1,20 +1,21 @@
 import { Database } from '@nozbe/watermelondb';
 import SQLiteAdapter from '@nozbe/watermelondb/adapters/sqlite';
 
-import { schema } from '../models/schema';
-import Appointment from '../models/Appointment';
+import { schema } from './schema';
+import { AppointmentModel } from './models/AppointmentModel';
 
 const adapter = new SQLiteAdapter({
   schema,
-  jsi: true, 
+  jsi: true, // Habilita a comunicação ultrarrápida (C++ direto para JS)
   onSetUpError: error => {
-    console.error("Falha ao inicializar o banco de dados offline:", error);
+    console.error("Falha ao configurar o banco de dados WatermelonDB:", error);
   }
 });
 
+// Nossa instância global do banco de dados
 export const database = new Database({
   adapter,
   modelClasses: [
-    Appointment,
+    AppointmentModel,
   ],
 });
